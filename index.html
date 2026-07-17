@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Life Dashboard</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+
+    <!-- ========== HEADER ========== -->
+    <header id="dashboard-header" class="header">
+      <div class="header__greeting">
+        <h1 id="greeting-text" class="greeting-text">Good Morning!</h1>
+      </div>
+      <div class="header__datetime">
+        <time id="current-time" class="current-time" aria-live="polite">00:00:00</time>
+        <time id="current-date" class="current-date" aria-live="polite">Monday, January 1, 2025</time>
+      </div>
+    </header>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main id="dashboard-main" class="dashboard">
+
+      <!-- Focus Timer Section -->
+      <section id="focus-timer" class="section section--timer" aria-labelledby="timer-heading">
+        <header class="section__header">
+          <h2 id="timer-heading" class="section__title">Focus Timer</h2>
+          <p class="section__subtitle">Stay focused, one session at a time.</p>
+        </header>
+
+        <div class="timer__display" aria-live="polite" aria-atomic="true">
+          <span id="timer-minutes" class="timer__minutes">25</span>
+          <span class="timer__separator">:</span>
+          <span id="timer-seconds" class="timer__seconds">00</span>
+        </div>
+
+              <div class="timer__mode-options" role="group" aria-label="Timer mode">
+          <button id="btn-pomodoro" class="timer__mode-btn timer__mode-btn--active" type="button">Pomodoro</button>
+          <button id="btn-short-break" class="timer__mode-btn" type="button">Short Break</button>
+          <button id="btn-long-break" class="timer__mode-btn" type="button">Long Break</button>
+        </div>
+
+        <div class="timer__duration-picker" role="group" aria-label="Pomodoro duration">
+          <label for="pomodoro-duration" class="timer__duration-label">Pomodoro duration</label>
+          <div class="timer__duration-options">
+            <button type="button" class="timer__duration-btn" data-minutes="15">15 min</button>
+            <button type="button" class="timer__duration-btn" data-minutes="20">20 min</button>
+            <button type="button" class="timer__duration-btn timer__duration-btn--active" data-minutes="25">25 min</button>
+            <button type="button" class="timer__duration-btn" data-minutes="45">45 min</button>
+            <button type="button" class="timer__duration-btn" data-minutes="60">60 min</button>
+          </div>
+        </div>
+
+
+        <div class="timer__controls" role="group" aria-label="Timer controls">
+          <button id="btn-start" class="timer__btn timer__btn--start" type="button">Start</button>
+          <button id="btn-pause" class="timer__btn timer__btn--pause" type="button">Pause</button>
+          <button id="btn-reset" class="timer__btn timer__btn--reset" type="button">Reset</button>
+        </div>
+
+        <p class="timer__session-info">
+          Session <span id="session-count" class="session-count">1</span> of 4
+        </p>
+      </section>
+
+      <!-- To-Do List Section -->
+      <section id="todo-list" class="section section--todo" aria-labelledby="todo-heading">
+        <header class="section__header">
+          <h2 id="todo-heading" class="section__title">To-Do List</h2>
+          <p class="section__subtitle">
+            <span id="tasks-completed" class="tasks-completed">0</span> /
+            <span id="tasks-total" class="tasks-total">0</span> tasks completed
+          </p>
+        </header>
+
+        <form id="todo-form" class="todo__form" aria-label="Add new task">
+          <label for="todo-input" class="todo__input-label">New task</label>
+          <div class="todo__input-group">
+            <input
+              type="text"
+              id="todo-input"
+              class="todo__input"
+              placeholder="What do you need to do?"
+              maxlength="100"
+              autocomplete="off"
+            />
+            <button id="btn-add-task" class="todo__add-btn" type="submit">Add</button>
+          </div>
+        </form>
+
+        <div class="todo__filters" role="group" aria-label="Filter tasks">
+          <button id="filter-all" class="todo__filter-btn todo__filter-btn--active" type="button">All</button>
+          <button id="filter-active" class="todo__filter-btn" type="button">Active</button>
+          <button id="filter-completed" class="todo__filter-btn" type="button">Completed</button>
+        </div>
+
+        <ul id="todo-items" class="todo__list" aria-label="Task list">
+          <!-- Tasks will be rendered here by JavaScript -->
+          <li class="todo__empty-state">No tasks yet. Add one above!</li>
+        </ul>
+
+        <footer class="todo__footer">
+          <button id="btn-clear-completed" class="todo__clear-btn" type="button">Clear Completed</button>
+        </footer>
+      </section>
+
+      <!-- Quick Links Section -->
+      <section id="quick-links" class="section section--links" aria-labelledby="links-heading">
+        <header class="section__header">
+          <h2 id="links-heading" class="section__title">Quick Links</h2>
+          <p class="section__subtitle">Your favourite resources in one place.</p>
+        </header>
+
+        <nav class="links__nav" aria-label="Quick links navigation">
+          <ul id="links-list" class="links__list">
+
+            <li class="links__item">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="links__anchor" aria-label="GitHub - opens in new tab">
+                <span class="links__icon" aria-hidden="true">🐙</span>
+                <span class="links__label">GitHub</span>
+              </a>
+            </li>
+
+            <li class="links__item">
+              <a href="https://developer.mozilla.org" target="_blank" rel="noopener noreferrer" class="links__anchor" aria-label="MDN Web Docs - opens in new tab">
+                <span class="links__icon" aria-hidden="true">📖</span>
+                <span class="links__label">MDN Docs</span>
+              </a>
+            </li>
+
+            <li class="links__item">
+              <a href="https://stackoverflow.com" target="_blank" rel="noopener noreferrer" class="links__anchor" aria-label="Stack Overflow - opens in new tab">
+                <span class="links__icon" aria-hidden="true">💬</span>
+                <span class="links__label">Stack Overflow</span>
+              </a>
+            </li>
+
+            <li class="links__item">
+              <a href="https://codepen.io" target="_blank" rel="noopener noreferrer" class="links__anchor" aria-label="CodePen - opens in new tab">
+                <span class="links__icon" aria-hidden="true">✏️</span>
+                <span class="links__label">CodePen</span>
+              </a>
+            </li>
+
+            <li class="links__item links__item--add">
+              <button id="btn-add-link" class="links__add-btn" type="button" aria-label="Add new quick link">
+                <span class="links__icon" aria-hidden="true">＋</span>
+                <span class="links__label">Add Link</span>
+              </button>
+            </li>
+
+          </ul>
+        </nav>
+      </section>
+
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer id="dashboard-footer" class="footer">
+      <p class="footer__text">Built with ❤️ for Coding Camp · <span id="footer-year">2025</span></p>
+    </footer>
+
+<!-- Name Modal -->
+<div id="name-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+  <div class="modal">
+    <h2 id="modal-title" class="modal__title">👋 Welcome!</h2>
+    <p class="modal__subtitle">What should we call you?</p>
+    <form id="name-form" class="modal__form">
+      <input
+        type="text"
+        id="name-input"
+        class="modal__input"
+        placeholder="Enter your name..."
+        maxlength="40"
+        autocomplete="given-name"
+        required
+      />
+      <button type="submit" class="modal__btn">Let's go →</button>
+    </form>
+  </div>
+</div>
+
+    <script src="js/script.js"></script>
+  </body> 
+
+</html>
